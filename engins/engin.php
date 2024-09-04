@@ -1,9 +1,5 @@
 <?php
 
-class Engin {
-    private $type;
-
-    public function getType() {
-        return $this->type;
-    }
+abstract class Engin {
+    public $type;
 }
