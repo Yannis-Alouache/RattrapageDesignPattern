@@ -7,6 +7,8 @@ class BoxManager {
     private static $instance;
     private $boxes;
 
+    private function __construct() {}
+
     public static function getInstance() {
         if (!self::$instance) {
             self::$instance = new BoxManager();
@@ -26,10 +28,31 @@ class BoxManager {
         }
     }
 
+    function verifyBoxesContainEachType() {
+        $neededTypes = ["Pelleteuse", "Tractopelle", "Nacelle", "Bulldozer", "Rouleau Compresseur"];
+
+
+        foreach ($this->boxes as $box) {
+            $typePresent = [];
+            foreach ($box->getEngins() as $engin) {
+                $typePresent[] = $engin->type;
+            }
+
+            foreach ($neededTypes as $neededType) {
+                if (!in_array($neededType, $typePresent)) {
+                    print("La Box n°". $box->getId() . " n'as pas tous les types d'engins ! \n");
+                    break;
+                }
+            }
+        }
+    }
+
     public function printAll() {
         foreach ($this->boxes as $box) {
             $box->printBox();
         }
+
+        $this->verifyBoxesContainEachType();
     }
 
 }

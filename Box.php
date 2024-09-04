@@ -23,6 +23,10 @@ class Box {
         }
     }
 
+    public function getEngins() {
+        return $this->engins;
+    }
+
     public function printBox() {
         print("- Box n°" . $this->id . "\n");
         if (count($this->engins) > 0) {
