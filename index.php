@@ -1,10 +1,15 @@
 <?php
 
 include_once("Factory.php");
+include_once("BoxManager.php");
 
 function main() {
-    $nacelle = Factory::getEngin("Nacelle");
-    print($nacelle->type);
+    $boxManager = BoxManager::getInstance();
+
+    $boxManager->createBox(1);
+
+    $boxManager->toString();
+
 }
 
 main();
