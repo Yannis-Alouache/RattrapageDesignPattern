@@ -18,9 +18,17 @@ class BoxManager {
         $this->boxes[] = new Box($id);
     }
 
-    public function toString() {
+    public function addEngin($boxId, $engin) {
         foreach ($this->boxes as $box) {
-            print($box->toString() . "\n");
+            if ($box->getId() == $boxId) {
+                $box->addEngin($engin);
+            }
+        }
+    }
+
+    public function printAll() {
+        foreach ($this->boxes as $box) {
+            $box->printBox();
         }
     }
 
